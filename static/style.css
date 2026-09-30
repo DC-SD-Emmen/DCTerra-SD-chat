@@ -1,0 +1,78 @@
+:root { --ink:#232323; --tekst:#292521; --stil:#6a6460; --accent:#b52e00; --rood:#d5002d;
+        --perzik:#ffe3c7; --beige:#f3e9e4; --lijn:#e6ddd7; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; display: flex; overflow: hidden; font-family: "Barlow", Arial, sans-serif; color: var(--tekst); background: #fff; }
+button { font: inherit; cursor: pointer; }
+
+/* Zijbalk met gesprekken */
+#zijbalk { width: 270px; flex-shrink: 0; background: var(--beige); display: flex; flex-direction: column; padding: 14px; gap: 10px; }
+.merk { padding: 6px 6px 8px; }
+.merk img { width: 150px; display: block; }
+.merk span { display: block; margin-top: 8px; font-family: "Barlow Semi Condensed"; font-weight: 700; font-size: 20px; text-transform: uppercase; color: var(--ink); letter-spacing: .3px; }
+.kop-logo { display: none; height: 26px; }
+.nieuw { background: var(--accent); color: #fff; border: 0; border-radius: 20px; padding: 9px 14px; font-weight: 600; text-align: left; }
+#gesprekken { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.gesprek { display: flex; align-items: center; border-radius: 8px; }
+.gesprek button.titel { flex: 1; background: none; border: 0; text-align: left; padding: 8px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--tekst); }
+.gesprek .weg { background: none; border: 0; color: var(--stil); padding: 4px 8px; visibility: hidden; }
+.gesprek:hover { background: #ebdfd8; } .gesprek:hover .weg { visibility: visible; }
+.gesprek.actief { background: #fff; }
+.voet { font-size: 12px; color: var(--stil); padding: 4px 6px; }
+
+/* Hoofdgedeelte */
+#hoofd { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+header { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--lijn); }
+header select { font: inherit; padding: 6px 10px; border: 1px solid var(--lijn); border-radius: 8px; background: #fff; }
+.icoon { background: none; border: 0; font-size: 20px; padding: 4px 8px; cursor: pointer; color: var(--ink); }
+#menu { display: none; }
+
+#chat { flex: 1; overflow-y: auto; padding: 24px 16px 8px; }
+.bericht { max-width: 780px; margin: 0 auto 18px; line-height: 1.6; }
+.bericht.gebruiker { display: flex; flex-direction: column; align-items: flex-end; }
+.bericht.gebruiker .ballon { background: var(--perzik); border-radius: 18px 18px 4px 18px; padding: 10px 16px; white-space: pre-wrap; max-width: 85%; }
+.bericht.gebruiker .fotos { display: flex; gap: 6px; margin-bottom: 6px; }
+.bericht.gebruiker .fotos img { width: 120px; height: 120px; object-fit: cover; border-radius: 12px; }
+.bericht.assistent .inhoud > :first-child { margin-top: 0; }
+.bericht.assistent pre { position: relative; background: #f7f3f0; border-radius: 10px; padding: 12px 14px; overflow-x: auto; font-size: 13.5px; }
+.bericht.assistent pre code.hljs { background: none; padding: 0; }
+.bericht.assistent code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: .9em; }
+.bericht.assistent :not(pre) > code { background: var(--beige); padding: 1px 5px; border-radius: 4px; }
+.kopieer { position: absolute; top: 6px; right: 6px; font-size: 12px; background: #fff; border: 1px solid var(--lijn); border-radius: 6px; padding: 2px 8px; }
+.gemaakt { margin: 10px 0; }
+.gemaakt img { max-width: 100%; width: 512px; border-radius: 14px; display: block; }
+.gemaakt a { font-size: 13px; color: var(--accent); }
+.status { color: var(--stil); font-style: italic; font-size: 14px; }
+.status::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--accent); animation: puls 1s infinite; }
+.fout { background: #fad8e3; border-radius: 10px; padding: 8px 12px; }
+@keyframes puls { 50% { opacity: .3; } }
+
+/* Welkomstscherm */
+#welkom { max-width: 700px; margin: 12vh auto 0; text-align: center; }
+#welkom h1 { font-family: "Barlow Semi Condensed"; font-size: 34px; text-transform: uppercase; color: var(--ink); }
+.suggesties { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+.suggesties button { background: #fff; border: 1px solid var(--lijn); border-radius: 12px; padding: 12px 14px; text-align: left; color: var(--tekst); }
+.suggesties button:hover { background: var(--beige); }
+
+/* Invoer */
+#formulier { padding: 8px 16px 12px; }
+.invoerbalk { max-width: 780px; margin: 0 auto; display: flex; align-items: flex-end; gap: 6px; border: 1px solid #cfc3bb; border-radius: 24px; padding: 6px 6px 6px 10px; background: #fff; }
+textarea { flex: 1; border: 0; outline: 0; resize: none; font: inherit; font-size: 16px; padding: 8px 4px; max-height: 200px; }
+.verstuur { width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--accent); color: #fff; font-size: 18px; font-weight: 700; flex-shrink: 0; }
+.verstuur.stop { background: var(--ink); }
+#bijlagen { max-width: 780px; margin: 0 auto 6px; display: flex; gap: 8px; }
+#bijlagen .bijlage { position: relative; }
+#bijlagen img { width: 64px; height: 64px; object-fit: cover; border-radius: 10px; border: 1px solid var(--lijn); }
+#bijlagen button { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; border: 0; background: var(--ink); color: #fff; font-size: 12px; line-height: 1; }
+.klein { text-align: center; font-size: 12px; color: var(--stil); margin-top: 6px; }
+
+/* Telefoon */
+@media (max-width: 760px) {
+  #zijbalk { position: fixed; inset: 0 auto 0 0; z-index: 10; transform: translateX(-100%); transition: transform .2s; box-shadow: 0 0 24px rgba(0,0,0,.15); }
+  #zijbalk.open { transform: none; }
+  #menu { display: block; }
+  .kop-logo { display: block; }
+  header select { flex: 1; min-width: 0; }
+  textarea::placeholder { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .suggesties { grid-template-columns: 1fr; }
+}

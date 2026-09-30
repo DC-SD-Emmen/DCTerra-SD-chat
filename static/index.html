@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SD Chat</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M8 2h22v22a6 6 0 0 1-6 6H2V8a6 6 0 0 1 6-6z' fill='%23b52e00'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+<aside id="zijbalk">
+  <div class="merk"><img src="/static/dcterra-logo.png" alt="DCTerra"><span>SD Chat</span></div>
+  <button id="nieuw" class="nieuw">+ Nieuw gesprek</button>
+  <nav id="gesprekken"></nav>
+  <div class="voet">Draait op de AI-server van de opleiding</div>
+</aside>
+
+<div id="hoofd">
+  <header>
+    <button id="menu" class="icoon" title="Gesprekken">☰</button>
+    <img class="kop-logo" src="/static/dcterra-logo.png" alt="DCTerra">
+    <select id="model">
+      <option value="gpt-oss:20b">gpt-oss:20b · snel</option>
+      <option value="qwen3.6:35b">qwen3.6:35b · code en afbeeldingen lezen</option>
+    </select>
+  </header>
+
+  <main id="chat">
+    <div id="welkom">
+      <h1>Waar kan ik je mee helpen?</h1>
+      <div class="suggesties">
+        <button>Leg uit wat een API is, met een voorbeeld in Python</button>
+        <button>Maak een afbeelding van een robot die leert programmeren</button>
+        <button>Schrijf een JavaScript-functie die een e-mailadres controleert</button>
+        <button>Bedenk een logo voor een app die huiswerk plant</button>
+      </div>
+    </div>
+  </main>
+
+  <form id="formulier">
+    <div id="bijlagen"></div>
+    <div class="invoerbalk">
+      <label class="icoon" title="Afbeelding toevoegen">📎<input id="bestand" type="file" accept="image/*" multiple hidden></label>
+      <textarea id="invoer" rows="1" placeholder="Stel een vraag of vraag om een afbeelding…"></textarea>
+      <button id="verstuur" class="verstuur" title="Versturen">↑</button>
+    </div>
+    <div class="klein">AI kan fouten maken. Controleer belangrijke informatie.</div>
+  </form>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
